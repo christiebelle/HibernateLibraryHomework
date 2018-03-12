@@ -112,13 +112,13 @@ public class DBHelper {
 
     public static <T> Object findById(String dbName, int id){
         session = HibernateUtil.getSessionFactory().openSession();
-        Object object = null;
+        Object foundobject = null;
         try {
             transaction = session.beginTransaction();
-            String hql = "from " + dbName + "WHERE id = :id";
+            String hql = "from " + dbName + " WHERE id = :id";
             Query query = session.createQuery(hql);
             query.setInteger("id", id);
-            object = query.uniqueResult();
+            foundobject = query.uniqueResult();
             transaction.commit();
         } catch (HibernateException ex) {
             transaction.rollback();
@@ -126,7 +126,7 @@ public class DBHelper {
         } finally {
             session.close();
         }
-        return object;
+        return foundobject;
     }
 }
 
