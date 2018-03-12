@@ -110,12 +110,12 @@ public class DBHelper {
         }
     }
 
-    public static Object findById(String dbName, int id){
+    public static <T> Object findById(String dbName, int id){
         session = HibernateUtil.getSessionFactory().openSession();
         Object object = null;
         try {
             transaction = session.beginTransaction();
-            String hql = "from " + dbName + " WHERE id = :id";
+            String hql = "from " + dbName + "WHERE id = :id";
             Query query = session.createQuery(hql);
             query.setInteger("id", id);
             object = query.uniqueResult();
