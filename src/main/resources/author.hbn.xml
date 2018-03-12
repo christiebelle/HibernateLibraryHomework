@@ -12,7 +12,7 @@
         <property name = "lastName" column = "lastName" type = "string"/>
         <set name="books" inverse="true" cascade="all" lazy="false">
             <key>
-                <column name="book_id" not-null="true" />
+                <column name="author_id" not-null="true" />
             </key>
             <one-to-many class="models.Book"/>
         </set>
