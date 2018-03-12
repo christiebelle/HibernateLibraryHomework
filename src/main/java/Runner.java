@@ -39,6 +39,8 @@ public class Runner {
         List<Author> authors = DBHelper.getAll("Author");
 
         List<Book> booksOfAuthor1 = DBHelper.getBooks(author1.getId());
+
+        Book foundBook = (Book)DBHelper.findById("books", book1.getId());
     }
 
 }
